@@ -5,65 +5,62 @@
 | Column           | Type   | Options     |
 | ---------------- | ------ | ----------- |
 | nickname         | string | null: false |
-| email            | string | null: false |
-| password         | string | null: false |
-| password_confirm | string | null: false |
-| name             | string | null: false |
-| name_katakana    | string | null: false |
-| birthday         | string | null: false |
+| email            | string | null: false, unique: true |
+| encrypted_password | string | null: false |
+| first_name         | string | null: false |
+| last_name          | string | null: false |
+| first_name_katakana | string | null: false |
+| last_name_katakana  | string | null: false |
+| birthday         | date | null: false |
 
 ### Association
 
 - has_many :items
-- has_many :purchase_user
+- has_many :purchase_users
 
 ## items テーブル
 
-| Column          | Type   | Options     |
-| --------------- | ------ | ----------- |
-| image           | string | null: false |
-| item_name       | string | null: false |
-| item_info       | text   | null: false |
-| category        | string | null: false |
-| item_status     | string | null: false |
-| fee_status      | string | null: false |
-| item_prefecture | string | null: false |
-| day             | string | null: false |
-| price           | string | null: false |
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| item_name          | string  | null: false |
+| item_info          | text    | null: false |
+| category_id        | integer | null: false |
+| item_status_id     | integer | null: false |
+| fee_status_id      | integer | null: false |
+| item_prefecture_id | integer | null: false |
+| day_id             | integer | null: false |
+| price              | integer | null: false |
 
 ### Association
 
-- has_many :purchase_user
-- belongs_to :users
+- has_one :purchase_user
+- belongs_to :user
 
 
 
-## purchase_user テーブル
+## purchase_users テーブル
 
-| Column  | Type       | Options           |
-| ------- | ---------- | ----------------- |
-| users   | references | foreign_key: true |
-| items   | references | foreign_key: true |
+| Column | Type       | Options           |
+| ------ | ---------- | ----------------- |
+| user   | references | foreign_key: true |
+| item   | references | foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 
-## address テーブル
+## addresses テーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------- | ----------- |
-| card_number    | integer | null: false |
-| card_exp_month | integer | null: false |
-| card_exp_year  | integer | null: false |
-| card_cvc       | integer | null: false |
-| postal_code    | integer | null: false |
-| prefecture     | string  | null: false |
-| city           | string  | null: false |
-| address        | string  | null: false |
-| building       | string  |             |
-| phone_number   | integer | null: false |
+| Column        | Type       | Options           |
+| ------------- | ---------- | ----------------- |
+| postal_code   | string     | null: false       |
+| prefecture    | string     | null: false       |
+| city          | string     | null: false       |
+| address       | string     | null: false       |
+| building      | string     |                   |
+| phone_number  | string     | null: false       |
+| purchase_user | references | foreign_key: true |
 
 ### Association
 
