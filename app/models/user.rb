@@ -18,8 +18,6 @@ class User < ApplicationRecord
       validates :last_name_katakana
       validates :first_name_katakana
     end
-
-    validates :password,
-    format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/, message: 'Password is invalid. Include both letters and numbers' }
   end
+  validates :password,format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/, message: 'Password is invalid. Include both letters and numbers' }
 end
