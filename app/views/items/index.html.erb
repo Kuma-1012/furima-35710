@@ -131,9 +131,8 @@
  
       <% @items.each do |item| %>
         <li class='list'>
-          <%= link_to "#" do %>
-          <div class='item-img-content'>
-           
+          <%= link_to item_path(item.id) do %>
+            <div class='item-img-content'>
               <%= image_tag item.image.variant(resize: '300x300'), class: 'item-image' %>
               <%# if item.purchase.present? %> 
               <%#  <div class='sold-out'>
@@ -152,7 +151,7 @@
                   </div>
                 </div>
               </div>
-          </div>
+            </div>
           <% end %>
         </li>
       <% end %>
