@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  # 商品を出品するにはログインしている必要がある
   before_action :authenticate_user!, except: [:index]
 
   def index

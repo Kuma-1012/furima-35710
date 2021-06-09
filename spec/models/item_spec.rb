@@ -92,31 +92,31 @@ RSpec.describe User, type: :model do
       end
 
       it 'category_idが1では保存できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
 
       it 'day_idが1では保存できない' do
-        @item.day_id = '1'
+        @item.day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Day must be other than 1')
       end
 
       it 'fee_status_idが1では保存できない' do
-        @item.fee_status_id = '1'
+        @item.fee_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Fee status must be other than 1')
       end
 
       it 'item_prefecture_idが1では保存できない' do
-        @item.item_prefecture_id = '1'
+        @item.item_prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Item prefecture must be other than 1')
       end
 
       it 'item_status_idが1では保存できない' do
-        @item.item_status_id = '1'
+        @item.item_status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Item status must be other than 1')
       end
