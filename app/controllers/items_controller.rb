@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :update, :show]
+  before_action :return_item, only: [:edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -19,10 +21,28 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def return_item
+    redirect_to root_path if current_user != @item.user
+  end
 
   def item_params
     params.require(:item).permit(:image, :item_name, :item_info, :category_id, :item_status_id, :fee_status_id,
