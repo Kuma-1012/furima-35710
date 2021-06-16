@@ -49,10 +49,10 @@ RSpec.describe User, type: :model do
         expect(@item.errors.full_messages).to include("Fee status can't be blank")
       end
 
-      it 'item_prefecture_idがない場合は登録できない' do
-        @item.item_prefecture_id = ''
+      it 'prefecture_idがない場合は登録できない' do
+        @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Item prefecture can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it 'day_idがない場合は登録できない' do
@@ -115,10 +115,10 @@ RSpec.describe User, type: :model do
         expect(@item.errors.full_messages).to include('Fee status must be other than 1')
       end
 
-      it 'item_prefecture_idが1では保存できない' do
-        @item.item_prefecture_id = 1
+      it 'prefecture_idが1では保存できない' do
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Item prefecture must be other than 1')
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
 
       it 'item_status_idが1では保存できない' do

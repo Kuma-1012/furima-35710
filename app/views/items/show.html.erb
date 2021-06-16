@@ -9,10 +9,10 @@
     <div class="item-img-content">
       <%= image_tag @item.image, class: 'item-image' %>
 
-      <%# if @item.present? %>
-       <%#% <div class="sold-out">
-          <span>Sold Out!!</span>
-        </div> 
+      <% if @item.purchase_user.present? %> 
+        <div class='sold-out'>
+            <span>Sold Out!!</span>
+        </div>
       <% end %>
 
     </div>
@@ -25,13 +25,13 @@
       </span>
     </div>
 
-     <% if user_signed_in? %>
-        <% if  current_user.id == @item.user_id %>
+      <% if user_signed_in? && !@item.purchase_user %>
+        <% if current_user.id == @item.user.id %>
           <%= link_to "商品の編集",  edit_item_path, method: :get, class: "item-red-btn" %>
           <p class="or-text">or</p>
           <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
         <% else %>
-          <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+          <%= link_to "購入画面に進む", item_purchase_users_path(@item.id), method: :get, class:"item-red-btn"%>
         <% end %>
       <% end %>
       
@@ -59,7 +59,7 @@
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.item_prefecture.name %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
