@@ -27,7 +27,7 @@
 | category_id        | integer | null: false |
 | item_status_id     | integer | null: false |
 | fee_status_id      | integer | null: false |
-| item_prefecture_id | integer | null: false |
+| prefecture_id | integer | null: false |
 | day_id             | integer | null: false |
 | price              | integer | null: false |
 
