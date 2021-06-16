@@ -1,6 +1,6 @@
 class PurchaseUsersController < ApplicationController
   before_action :kumagai_params, only: [:index, :create]
-  before_action :sold_out_item, only: [:index]
+  before_action :sold_out_item, only: [:index, :create]
 
   def index
     @purchase_user_address = PurchaseUserAddress.new
