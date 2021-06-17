@@ -1,4 +1,5 @@
 class PurchaseUsersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :kumagai_params, only: [:index, :create]
   before_action :sold_out_item, only: [:index, :create]
 
